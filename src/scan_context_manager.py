@@ -1,8 +1,13 @@
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
 
-def sonar_img_to_mat(sonar_data_path: str):
-    pass
+def visualize_scan_context(scan_context, idx):
+    cmap = plt.get_cmap('Greys')
+    plt.matshow(scan_context, cmap=cmap)
+    # plt.colorbar()
+    plt.tight_layout()
+    plt.savefig("./sc_"+str(idx)+".png")
 
 class ScanContextManager:
     def __init__(self, 
@@ -18,8 +23,8 @@ class ScanContextManager:
             sonar_img_ext (str) : 이미지인지 npy인지
         """
         self.sequence_length = sequence_length
-        self.scan_contexts = [] * sequence_length # 복제 식으로 들어가진 않는지 점검
-        self.ring_keys = [] * sequence_length # 복제 식으로 들어가진 않는지 점검
+        self.scan_contexts = [[]] * sequence_length # 복제 식으로 들어가진 않는지 점검
+        self.ring_keys = [0] * sequence_length # 복제 식으로 들어가진 않는지 점검
         self.sonar_img_ext = sonar_img_ext # default: "npy"
 
         self.max_range = max_range

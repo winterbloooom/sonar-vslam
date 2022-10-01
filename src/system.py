@@ -34,8 +34,8 @@ class System:
         self.max_azimuth = 0
         self.sector_res = 0
         self.ring_res = 0
-        self.scan_paths = [path for path in natsort.natsorted(os.listdir(self.sonar_img_path))]
-        self.sequence_length = len(self.scan_paths)
+        self.scan_paths = None
+        self.sequence_length = 0
 
         # Node(Scan Contexts)
         self.sc_manager = None
@@ -53,6 +53,8 @@ class System:
             self.max_azimuth = params['max_azimuth']
             self.sector_res = params['sector_res']
             self.ring_res = params['ring_res']
+        self.scan_paths = [self.sonar_img_path + path for path in natsort.natsorted(os.listdir(self.sonar_img_path))]
+        self.sequence_length = len(self.scan_paths)
 
     def create_scan_context_manager(self):
         self.sc_manager = ScanContextManager(sequence_length=self.sequence_length, 

@@ -1,5 +1,5 @@
 # dataset
-sonar_img_path: "./data/image_npy/"
+sonar_img_path: "../data/image_npy/"
 sonar_img_ext: "npy"
 
 # sensor params

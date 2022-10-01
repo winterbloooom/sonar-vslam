@@ -1,0 +1,13 @@
+# dataset
+sonar_img_path: "./data/image_npy/"
+sonar_img_ext: "npy"
+
+# sensor params
+min_range: 1 # [m]
+max_range: 40 # [m]
+max_azimuth: 130 # [deg]
+
+# scan context params
+sector_res: 60 # number of sectors = number of columns = divides azimuth
+ring_res: 40 # number of rings = number of rows = divides range
+
